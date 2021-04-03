@@ -13,9 +13,12 @@ public class Person {
 	public String getId_type() {
 		return id_type;
 	}
-
 	public int getId_number() {
 		return id_number;
+	}
+
+	public void setId_number(int id_number) {
+		this.id_number = id_number;
 	}
 
 }
