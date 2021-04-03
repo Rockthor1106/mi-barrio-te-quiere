@@ -18,4 +18,10 @@ public class MiBarrioTeQuiere {
 		return valid;
 
 	}
+	
+	public int penultimateIdNumber(String id_number) {
+		char[] digits = id_number.toCharArray();
+		return digits.length-1;
+	}
+
 }
