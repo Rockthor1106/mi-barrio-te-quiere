@@ -21,6 +21,9 @@ class MiBarrioTeQuiereTest {
 		MiBarrioTeQuiere miBarrioTeQuiere = new MiBarrioTeQuiere();
 		miBarrioTeQuiere.registerPerson(id_type, id_number,valid_person);
 
+		assertEquals(id_type, miBarrioTeQuiere.getPersons().get(0).getId_type());
+		assertEquals(id_number, miBarrioTeQuiere.getPersons().get(0).getId_number());
+		assertEquals(valid_person, miBarrioTeQuiere.registerPerson(id_type, id_number, valid_person));
 
 	}
 	

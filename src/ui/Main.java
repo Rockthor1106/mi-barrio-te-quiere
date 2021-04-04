@@ -3,13 +3,9 @@ package ui;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import javax.activity.InvalidActivityException;
-
 import exceptions.InvalidIdNumberException;
 import exceptions.TiException;
 import model.MiBarrioTeQuiere;
-import java.lang.System;
 public class Main {
 
 	private static Scanner sc;
@@ -19,9 +15,9 @@ public class Main {
 		//variables
 		
 		sc = new Scanner(System.in);
-		int selection, type_selection = 0, id_number = 0, attemps = 0;
+		int selection, type_selection = 0, id_number = 0, attemps = 0, back;
 		String id_type = "";
-		boolean exit = true;
+		boolean repeat = false;
 		MiBarrioTeQuiere mbtq = new MiBarrioTeQuiere();
 		
 		//Menu
@@ -75,7 +71,18 @@ public class Main {
 									throw new InvalidIdNumberException();
 								}
 								else {
-									mbtq.registerPerson(id_type, id_number,true); //The third parameter is true because in this part the person that wants get into is adult
+									if (mbtq.registerPerson(id_type, id_number,true) == true) {//The third parameter is true because in this part the person that wants get into is adult
+										System.out.println("--- Ingreso Registrado ---");
+									} 
+									System.out.println("1. Regresar al menu inicio");
+									back = sc.nextInt();
+									System.out.println();
+									if (back == 1) {
+										repeat = true;
+									}
+									else {
+										System.out.println("No existe una opcion asociada al numero ingresado");
+									}
 								}
 							} catch (InvalidIdNumberException inide) {
 								System.out.println(new InvalidIdNumberException().getMessage());
@@ -91,13 +98,13 @@ public class Main {
 					
 				}
 				else if (selection == 2) {
-					System.out.println("---------------------------------");
+					System.out.println("\n---------------------------------");
 					System.out.println("Intentos de ingreso: " + attemps);
-					System.out.println("---------------------------------");
+					System.out.println("---------------------------------\n");
 
 				}
 				else if (selection == 3) {
-					System.exit(0); //close the program
+					repeat = false; //close the program
 				}
 				else {
 					System.out.println("No existe una opcion asociada al numero ingresado");
@@ -106,7 +113,7 @@ public class Main {
 			} catch (InputMismatchException ime) {
 				System.out.println("Solamente se admiten numeros en este campo");
 			}
-		} while (exit);	
+		} while (repeat);	
 		
 	}
 
