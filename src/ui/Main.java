@@ -1,13 +1,14 @@
 package ui;
 
-import java.time.LocalDate;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import exceptions.GovermentNormativeException;
+import javax.activity.InvalidActivityException;
+
+import exceptions.InvalidIdNumberException;
 import exceptions.TiException;
 import model.MiBarrioTeQuiere;
-import java.time.LocalDate;
 import java.lang.System;
 public class Main {
 
@@ -18,11 +19,10 @@ public class Main {
 		//variables
 		
 		sc = new Scanner(System.in);
-		int selection, type_selection = 0, id_number, penultimate_number, attemps = 0;
+		int selection, type_selection = 0, id_number = 0, attemps = 0;
 		String id_type = "";
-		boolean exit = false;
+		boolean exit = true;
 		MiBarrioTeQuiere mbtq = new MiBarrioTeQuiere();
-		
 		
 		//Menu
 		
@@ -61,7 +61,7 @@ public class Main {
 			        
 			        attemps++;
 			        
-					try {
+			        try {
 						if (id_type.equals("TI")) {
 							throw new TiException();
 						}
@@ -69,39 +69,44 @@ public class Main {
 						
 							System.out.println("Ingrese el numero de identificacion:");
 							id_number = sc.nextInt();
-							mbtq.addPerson(id_type, id_number);
-							penultimate_number = Integer.parseInt(mbtq.penultimateIdNumber(String.valueOf(id_number)));
+							
 							try {
-								if (penultimate_number % 2 == 0 && LocalDate.now().getDayOfMonth() % 2 == 0) {
-									throw new GovermentNormativeException();
+								if (mbtq.HowMuchDigitsHave(id_number) < 3) {
+									throw new InvalidIdNumberException();
 								}
-								if (penultimate_number % 2 != 0 && LocalDate.now().getDayOfMonth() % 2 != 0){
-									throw new GovermentNormativeException();
+								else {
+									mbtq.registerPerson(id_type, id_number,true); //The third parameter is true because in this part the person that wants get into is adult
 								}
-								mbtq.addPerson(id_type, id_number);
-								System.out.println("Ingreso registrado");
-								
-							} catch (GovermentNormativeException gne) {
-								System.out.println(new GovermentNormativeException().getMessage());
+							} catch (InvalidIdNumberException inide) {
+								System.out.println(new InvalidIdNumberException().getMessage());
 							}
+						}
+						else {
+							System.out.println("No existe una opcion asociada al numero ingresado");
 						}
 						
 					} catch (TiException tiE) {
 						System.out.println(new TiException().getMessage());
 					}
+					
 				}
 				else if (selection == 2) {
+					System.out.println("---------------------------------");
 					System.out.println("Intentos de ingreso: " + attemps);
+					System.out.println("---------------------------------");
+
 				}
-				if (selection == 3) {
+				else if (selection == 3) {
 					System.exit(0); //close the program
+				}
+				else {
+					System.out.println("No existe una opcion asociada al numero ingresado");
 				}
 				
 			} catch (InputMismatchException ime) {
 				System.out.println("Solamente se admiten numeros en este campo");
 			}
-		} while (exit);
-		
+		} while (exit);	
 		
 	}
 
