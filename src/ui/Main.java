@@ -111,7 +111,7 @@ public class Main {
 				}
 				
 			} catch (InputMismatchException ime) {
-				System.out.println("Solamente se admiten numeros en este campo");
+				System.out.println("Se introdujo un elemento no numerico o un elemento numerico pero con un rango no admitido");
 			}
 		} while (repeat);	
 		
