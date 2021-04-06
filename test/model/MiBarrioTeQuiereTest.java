@@ -66,7 +66,7 @@ class MiBarrioTeQuiereTest {
 		
 		MiBarrioTeQuiere miBarrioTeQuiere = new MiBarrioTeQuiere();
 		
-		assertEquals(4, miBarrioTeQuiere.HowMuchDigitsHave(id_number));
+		assertEquals(4, miBarrioTeQuiere.howMuchDigitsHave(id_number));
 	}
 
 }

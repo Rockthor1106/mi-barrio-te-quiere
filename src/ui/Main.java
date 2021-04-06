@@ -67,7 +67,7 @@ public class Main {
 							id_number = sc.nextInt();
 							
 							try {
-								if (mbtq.HowMuchDigitsHave(id_number) < 3) {
+								if (mbtq.howMuchDigitsHave(id_number) < 3) {
 									throw new InvalidIdNumberException();
 								}
 								else {

@@ -17,8 +17,4 @@ public class Person {
 		return id_number;
 	}
 
-	public void setId_number(int id_number) {
-		this.id_number = id_number;
-	}
-
 }

@@ -3,7 +3,7 @@ package model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import exceptions.GovermentNormativeException;
+import exceptions.GovernmentNormativeException;
 
 public class MiBarrioTeQuiere {
 	
@@ -16,19 +16,19 @@ public class MiBarrioTeQuiere {
 		if (valid_person == true) {
 			try {
 				if (penultimate_number % 2 == 0 && LocalDate.now().getDayOfMonth() % 2 == 0) {
-					throw new GovermentNormativeException();
+					throw new GovernmentNormativeException();
 					
 				}
 				else if (penultimate_number % 2 != 0 && LocalDate.now().getDayOfMonth() % 2 != 0){
-					throw new GovermentNormativeException();
+					throw new GovernmentNormativeException();
 				}
 				else {
 					persons.add(new Person(id_type, id_number));
 					registered = true;
 				}
 					
-			} catch (GovermentNormativeException gne) {
-				System.out.println(new GovermentNormativeException().getMessage());
+			} catch (GovernmentNormativeException gne) {
+				System.out.println(new GovernmentNormativeException().getMessage());
 			}
 		
 		}	
@@ -44,7 +44,7 @@ public class MiBarrioTeQuiere {
 		return String.valueOf(digits[digits.length - 2]); // return the second to last position of digits
 	}
 	
-	public int HowMuchDigitsHave(int id_number) {
+	public int howMuchDigitsHave(int id_number) {
 		String number = String.valueOf(id_number);
 		char[] digits = number.toCharArray();
 		return digits.length;
