@@ -1,5 +1,6 @@
 package exceptions;
 
+@SuppressWarnings("serial")
 public class TiException extends Exception {
 	
 	public TiException() {

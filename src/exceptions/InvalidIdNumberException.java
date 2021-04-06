@@ -1,5 +1,6 @@
 package exceptions;
 
+@SuppressWarnings("serial")
 public class InvalidIdNumberException extends Exception {
 
 	public InvalidIdNumberException() {
