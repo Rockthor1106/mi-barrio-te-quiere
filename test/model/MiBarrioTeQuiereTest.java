@@ -32,7 +32,7 @@ class MiBarrioTeQuiereTest {
 	//Second condition: The government regulation to go out
 	//because basically the thing to to evaluate is if the person is registered or not
 	@Test 
-	public void testInvalidIdTypeAndDaryToGoOut() {
+	public void testInvalidIdTypeAndDayToGoOut() {
 		setupScenary1();
 		
 		String id_type = "TI";
